@@ -22,6 +22,10 @@ class TimelineVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        hashtagTextField.delegate = self
+        
+        
+        
         getMastodonTimeline(hashtag: "test")
     }
     
@@ -123,7 +127,30 @@ class TimelineVC: UIViewController {
 
 //==================================================================
 
-
+// MARK: - Text View delegate
+extension TimelineVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        
+        if let hashtag = hashtagTextField.text {
+            
+            if hashtag == "" || hashtag == " " {
+                simpleAlert(title: "Ошибка", message: "Неверно введены данные", buttonText: "Ок")
+            } else {
+                // hide keyboard
+                hashtagTextField.resignFirstResponder()
+                // check data
+                let noSpacesString = hashtag.replacingOccurrences(of: " ", with: "")
+                //erase data
+                outputArray = []
+                // get data
+                getMastodonTimeline(hashtag: noSpacesString)
+            }
+        }
+        
+        return true
+    }
+}
 
 // MARK: - TableView data source and delegate
 extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
