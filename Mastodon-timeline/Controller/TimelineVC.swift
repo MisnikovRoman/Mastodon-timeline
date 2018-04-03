@@ -28,15 +28,19 @@ class TimelineVC: UIViewController {
     @IBAction func searchBtnPress(_ sender: Any) {
         // receive data from textField
         if let hashtag = hashtagTextField.text {
-            // hide keyboard
-            hashtagTextField.resignFirstResponder()
-            // check data
-            let noSpacesString = hashtag.replacingOccurrences(of: " ", with: "%20")
-            //erase data
-            outputArray = []
-            // get data
-            getMastodonTimeline(hashtag: noSpacesString)
             
+            if hashtag == "" || hashtag == " " {
+                simpleAlert(title: "Ошибка", message: "Неверно введены данные", buttonText: "Ок")
+            } else {
+                // hide keyboard
+                hashtagTextField.resignFirstResponder()
+                // check data
+                let noSpacesString = hashtag.replacingOccurrences(of: " ", with: "")
+                //erase data
+                outputArray = []
+                // get data
+                getMastodonTimeline(hashtag: noSpacesString)
+            }
         }
     }
     
@@ -160,6 +164,8 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
         if let imageLink = outputArray[indexPath.row].account?.avatar_static {
             cell.userImage.downloadedFrom(link: imageLink)
         }
+        cell.userImage.layer.cornerRadius = 10.0
+        cell.userImage.layer.masksToBounds = true
         
         // change attributed text
         cell.contentTextView.font = UIFont(name: "Helvetica", size: 14.0)
