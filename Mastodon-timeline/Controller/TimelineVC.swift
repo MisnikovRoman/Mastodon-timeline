@@ -57,7 +57,7 @@ class TimelineVC: UIViewController {
             
             // check response code for '200' - received normal data
             guard let resp = response as? HTTPURLResponse, resp.statusCode == 200 else {
-                self.simpleAlert(title: "Ошибка", message: "Сработала защита GUARD по значению кода ошибки", buttonText: "ОК")
+                self.simpleAlert(title: "Ошибка", message: "Нет ответа от сервера", buttonText: "ОК")
                 return
             }
             
@@ -133,26 +133,35 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
         // cancel scrolling in textView
         cell.contentTextView.isScrollEnabled = false
         
+        // show name
         cell.nameLbl.text = "Cell \(indexPath.row)"
         let name = outputArray[indexPath.row].account?.display_name
         let nikName = outputArray[indexPath.row].account?.username
         cell.nameLbl.text = name!
         cell.nikNameLbl.text = "(@" + nikName! + ")"
         
+        // show date
         cell.contentTextView.attributedText = outputArray[indexPath.row].content?.convertHtml()
         if let dateString = outputArray[indexPath.row].created_at {
             let date = DateFormatter.mastodonFormatter.date(from: dateString)
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_GB")
             dateFormatter.setLocalizedDateFormatFromTemplate("MMMMdHHmm") // // set template after setting locale
-            let newStrindDate = dateFormatter.string(from: date!)
+            var newStrindDate = dateFormatter.string(from: date!)
+            
+            let secondsFromPost = Int(Date().timeIntervalSince(date!))
+            let timeFromPost = NewTime(seconds: secondsFromPost)
+            newStrindDate = timeFromPost.printTime()
+            
             cell.dateLbl.text = newStrindDate
         }
         
+        // show image
         if let imageLink = outputArray[indexPath.row].account?.avatar_static {
             cell.userImage.downloadedFrom(link: imageLink)
         }
         
+        // change attributed text
         cell.contentTextView.font = UIFont(name: "Helvetica", size: 14.0)
         cell.contentTextView.isUserInteractionEnabled = false
         
