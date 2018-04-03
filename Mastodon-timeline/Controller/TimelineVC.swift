@@ -19,13 +19,14 @@ class TimelineVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // add delegate and ds to self for using tableView
         tableView.delegate = self
         tableView.dataSource = self
         
+        // for hidding keyboard after 'RETURN' press
         hashtagTextField.delegate = self
         
-        
-        
+        // initial request to load
         getMastodonTimeline(hashtag: "test")
     }
     
@@ -33,6 +34,7 @@ class TimelineVC: UIViewController {
         // receive data from textField
         if let hashtag = hashtagTextField.text {
             
+            // simple test for input data
             if hashtag == "" || hashtag == " " {
                 simpleAlert(title: "Ошибка", message: "Неверно введены данные", buttonText: "Ок")
             } else {
@@ -52,6 +54,7 @@ class TimelineVC: UIViewController {
     // MARK: - Receive data from network
     func getMastodonTimeline(hashtag: String) {
         
+        // basic URL for request
         let baseUrl = "https://mastodon.social/api/v1/timelines/tag/"
         // build full url for GET request
         let stringUrl = baseUrl + hashtag
@@ -87,13 +90,14 @@ class TimelineVC: UIViewController {
         do {
             guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [Any] else { return []}
             
+            // loop for all objects in data array
             for item in json {
+                // convert to dictionary
                 let testData = item as? [String: Any]
+                // initialize Post object
                 let newData = Post(json: testData!)
-                
                 // add parsed data
                 outputArray.append(newData)
-                
                 // debug message
                 if let nik = newData.account?.display_name {print("Nik: ", nik)}
                 
@@ -130,10 +134,11 @@ class TimelineVC: UIViewController {
 // MARK: - Text View delegate
 extension TimelineVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // for hiding keyboard
         self.view.endEditing(true)
-        
+        // get data from text field
         if let hashtag = hashtagTextField.text {
-            
+            // simple test
             if hashtag == "" || hashtag == " " {
                 simpleAlert(title: "Ошибка", message: "Неверно введены данные", buttonText: "Ок")
             } else {
@@ -154,10 +159,12 @@ extension TimelineVC: UITextFieldDelegate {
 
 // MARK: - TableView data source and delegate
 extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
+    // number of elements in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return outputArray.count
     }
     
+    // initialize every cell here
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "message", for: indexPath) as! Cell
         
@@ -174,8 +181,6 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
         // show date
         cell.contentTextView.attributedText = outputArray[indexPath.row].content?.convertHtml()
         if let dateString = outputArray[indexPath.row].created_at {
-            
-            print("--> ", dateString)
             
             let date = DateFormatter.mastodonFormatter.date(from: dateString)
             let dateFormatter = DateFormatter()
@@ -204,6 +209,7 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // segue after item in table view press
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sender = outputArray[indexPath.row]
         performSegue(withIdentifier: "openDetails", sender: sender)
