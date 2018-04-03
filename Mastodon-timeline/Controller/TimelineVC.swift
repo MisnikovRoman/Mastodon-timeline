@@ -174,6 +174,9 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
         // show date
         cell.contentTextView.attributedText = outputArray[indexPath.row].content?.convertHtml()
         if let dateString = outputArray[indexPath.row].created_at {
+            
+            print("--> ", dateString)
+            
             let date = DateFormatter.mastodonFormatter.date(from: dateString)
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_GB")

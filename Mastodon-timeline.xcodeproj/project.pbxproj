@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8C37DD72073E26000CDEAE7 /* Mastodon_timelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C37DD62073E26000CDEAE7 /* Mastodon_timelineTests.swift */; };
 		C8D5E9BD207367870029869D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9BC207367870029869D /* AppDelegate.swift */; };
 		C8D5E9C2207367870029869D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D5E9C0207367870029869D /* Main.storyboard */; };
 		C8D5E9C4207367870029869D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D5E9C3207367870029869D /* Assets.xcassets */; };
@@ -18,7 +19,20 @@
 		C8D5E9DC2073B53E0029869D /* NewTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9DB2073B53E0029869D /* NewTime.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C8C37DD92073E26000CDEAE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8D5E9B1207367870029869D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8D5E9B8207367870029869D;
+			remoteInfo = "Mastodon-timeline";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C8C37DD42073E26000CDEAE7 /* Mastodon-timelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mastodon-timelineTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C37DD62073E26000CDEAE7 /* Mastodon_timelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mastodon_timelineTests.swift; sourceTree = "<group>"; };
+		C8C37DD82073E26000CDEAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D5E9B9207367870029869D /* Mastodon-timeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mastodon-timeline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D5E9BC207367870029869D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D5E9C1207367870029869D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,6 +47,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C8C37DD12073E26000CDEAE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D5E9B6207367870029869D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8C37DD52073E26000CDEAE7 /* Mastodon-timelineTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8C37DD62073E26000CDEAE7 /* Mastodon_timelineTests.swift */,
+				C8C37DD82073E26000CDEAE7 /* Info.plist */,
+			);
+			path = "Mastodon-timelineTests";
+			sourceTree = "<group>";
+		};
 		C8D5E9B0207367870029869D = {
 			isa = PBXGroup;
 			children = (
 				C8D5E9BB207367870029869D /* Mastodon-timeline */,
+				C8C37DD52073E26000CDEAE7 /* Mastodon-timelineTests */,
 				C8D5E9BA207367870029869D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				C8D5E9B9207367870029869D /* Mastodon-timeline.app */,
+				C8C37DD42073E26000CDEAE7 /* Mastodon-timelineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +135,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C8C37DD32073E26000CDEAE7 /* Mastodon-timelineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8C37DDD2073E26000CDEAE7 /* Build configuration list for PBXNativeTarget "Mastodon-timelineTests" */;
+			buildPhases = (
+				C8C37DD02073E26000CDEAE7 /* Sources */,
+				C8C37DD12073E26000CDEAE7 /* Frameworks */,
+				C8C37DD22073E26000CDEAE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8C37DDA2073E26000CDEAE7 /* PBXTargetDependency */,
+			);
+			name = "Mastodon-timelineTests";
+			productName = "Mastodon-timelineTests";
+			productReference = C8C37DD42073E26000CDEAE7 /* Mastodon-timelineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C8D5E9B8207367870029869D /* Mastodon-timeline */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8D5E9CB207367870029869D /* Build configuration list for PBXNativeTarget "Mastodon-timeline" */;
@@ -130,6 +180,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Роман Мисников";
 				TargetAttributes = {
+					C8C37DD32073E26000CDEAE7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C8D5E9B8207367870029869D;
+					};
 					C8D5E9B8207367870029869D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -150,11 +205,19 @@
 			projectRoot = "";
 			targets = (
 				C8D5E9B8207367870029869D /* Mastodon-timeline */,
+				C8C37DD32073E26000CDEAE7 /* Mastodon-timelineTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C8C37DD22073E26000CDEAE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D5E9B7207367870029869D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,6 +231,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C8C37DD02073E26000CDEAE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8C37DD72073E26000CDEAE7 /* Mastodon_timelineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8D5E9B5207367870029869D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +253,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C8C37DDA2073E26000CDEAE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8D5E9B8207367870029869D /* Mastodon-timeline */;
+			targetProxy = C8C37DD92073E26000CDEAE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C8D5E9C0207367870029869D /* Main.storyboard */ = {
@@ -203,6 +282,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C8C37DDB2073E26000CDEAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJHX98NUDV;
+				INFOPLIST_FILE = "Mastodon-timelineTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "RFMisnikov.Mastodon-timelineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastodon-timeline.app/Mastodon-timeline";
+			};
+			name = Debug;
+		};
+		C8C37DDC2073E26000CDEAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JJHX98NUDV;
+				INFOPLIST_FILE = "Mastodon-timelineTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "RFMisnikov.Mastodon-timelineTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mastodon-timeline.app/Mastodon-timeline";
+			};
+			name = Release;
+		};
 		C8D5E9C9207367870029869D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -343,6 +454,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C8C37DDD2073E26000CDEAE7 /* Build configuration list for PBXNativeTarget "Mastodon-timelineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8C37DDB2073E26000CDEAE7 /* Debug */,
+				C8C37DDC2073E26000CDEAE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C8D5E9B4207367870029869D /* Build configuration list for PBXProject "Mastodon-timeline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
