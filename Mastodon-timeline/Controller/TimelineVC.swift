@@ -14,6 +14,7 @@ class TimelineVC: UIViewController {
     var outputArray: [Post] = []
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var hashtagTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,22 @@ class TimelineVC: UIViewController {
         
         getMastodonTimeline(hashtag: "test")
     }
+    
+    @IBAction func searchBtnPress(_ sender: Any) {
+        // receive data from textField
+        if let hashtag = hashtagTextField.text {
+            // hide keyboard
+            hashtagTextField.resignFirstResponder()
+            // check data
+            let noSpacesString = hashtag.replacingOccurrences(of: " ", with: "%20")
+            //erase data
+            outputArray = []
+            // get data
+            getMastodonTimeline(hashtag: noSpacesString)
+            
+        }
+    }
+    
 
     // MARK: - Receive data from network
     func getMastodonTimeline(hashtag: String) {
@@ -69,15 +86,9 @@ class TimelineVC: UIViewController {
                 // add parsed data
                 outputArray.append(newData)
                 
-                // test in command line
-                //                if let id = newData.id {print("=====NEW_POST=====\n", "ID: ", id)}
-                //                if let ava = newData.account?.avatar_static {print("Avatar: ", ava)}
+                // debug message
                 if let nik = newData.account?.display_name {print("Nik: ", nik)}
-                //                if let postText = newData.content {print("Post: ", postText)}
-                //                if let time = newData.created_at {
-                //                    let showTime = DateFormatter.mastodonFormatter.date(from: time)
-                //                    print("Time: ", showTime)
-                //                }
+                
             }
             
         } catch let jsonError {
@@ -118,12 +129,17 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "message", for: indexPath) as! Cell
+        
+        // cancel scrolling in textView
+        cell.contentTextView.isScrollEnabled = false
+        
         cell.nameLbl.text = "Cell \(indexPath.row)"
         let name = outputArray[indexPath.row].account?.display_name
         let nikName = outputArray[indexPath.row].account?.username
-        cell.nameLbl.text = name! + " (@" + nikName! + ")"
+        cell.nameLbl.text = name!
+        cell.nikNameLbl.text = "(@" + nikName! + ")"
         
-        cell.contentLbl.attributedText = outputArray[indexPath.row].content?.convertHtml()
+        cell.contentTextView.attributedText = outputArray[indexPath.row].content?.convertHtml()
         if let dateString = outputArray[indexPath.row].created_at {
             let date = DateFormatter.mastodonFormatter.date(from: dateString)
             let dateFormatter = DateFormatter()
@@ -137,8 +153,24 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
             cell.userImage.downloadedFrom(link: imageLink)
         }
         
+        cell.contentTextView.font = UIFont(name: "Helvetica", size: 14.0)
+        cell.contentTextView.isUserInteractionEnabled = false
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sender = outputArray[indexPath.row]
+        performSegue(withIdentifier: "openDetails", sender: sender)
+    }
+    
+    // MARK: - Send data to the next VC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsVC = segue.destination as? DetailsVC {
+            detailsVC.mainPost = sender as! Post
+        }
+    }
+    
     
     
 }

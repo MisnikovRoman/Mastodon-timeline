@@ -11,11 +11,9 @@ import UIKit
 class Cell: UITableViewCell {
 
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nikNameLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    
-    
-    
+    @IBOutlet weak var contentTextView: UITextView!
     
 }
