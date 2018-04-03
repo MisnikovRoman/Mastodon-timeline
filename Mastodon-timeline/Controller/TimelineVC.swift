@@ -221,9 +221,6 @@ extension TimelineVC: UITableViewDelegate, UITableViewDataSource {
             detailsVC.mainPost = sender as! Post
         }
     }
-    
-    
-    
 }
 
 // MARK: - String from HTML text
