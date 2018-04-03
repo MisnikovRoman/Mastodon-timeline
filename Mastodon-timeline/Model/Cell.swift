@@ -15,4 +15,7 @@ class Cell: UITableViewCell {
     @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
+    
+    
+    
 }
