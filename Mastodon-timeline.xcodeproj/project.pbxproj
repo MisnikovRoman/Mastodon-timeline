@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		C8D5E9BD207367870029869D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9BC207367870029869D /* AppDelegate.swift */; };
-		C8D5E9BF207367870029869D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9BE207367870029869D /* ViewController.swift */; };
 		C8D5E9C2207367870029869D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D5E9C0207367870029869D /* Main.storyboard */; };
 		C8D5E9C4207367870029869D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D5E9C3207367870029869D /* Assets.xcassets */; };
 		C8D5E9C7207367870029869D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D5E9C5207367870029869D /* LaunchScreen.storyboard */; };
+		C8D5E9D22073687B0029869D /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9D12073687B0029869D /* TimelineVC.swift */; };
+		C8D5E9D4207369160029869D /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D5E9D3207369160029869D /* DetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C8D5E9B9207367870029869D /* Mastodon-timeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mastodon-timeline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D5E9BC207367870029869D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C8D5E9BE207367870029869D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8D5E9C1207367870029869D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8D5E9C3207367870029869D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8D5E9C6207367870029869D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8D5E9C8207367870029869D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8D5E9D12073687B0029869D /* TimelineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
+		C8D5E9D3207369160029869D /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,39 @@
 		C8D5E9BB207367870029869D /* Mastodon-timeline */ = {
 			isa = PBXGroup;
 			children = (
+				C8D5E9CE207368150029869D /* Model */,
+				C8D5E9CF2073681D0029869D /* View */,
+				C8D5E9D0207368210029869D /* Controller */,
 				C8D5E9BC207367870029869D /* AppDelegate.swift */,
-				C8D5E9BE207367870029869D /* ViewController.swift */,
 				C8D5E9C0207367870029869D /* Main.storyboard */,
 				C8D5E9C3207367870029869D /* Assets.xcassets */,
 				C8D5E9C5207367870029869D /* LaunchScreen.storyboard */,
 				C8D5E9C8207367870029869D /* Info.plist */,
 			);
 			path = "Mastodon-timeline";
+			sourceTree = "<group>";
+		};
+		C8D5E9CE207368150029869D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8D5E9CF2073681D0029869D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C8D5E9D0207368210029869D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C8D5E9D12073687B0029869D /* TimelineVC.swift */,
+				C8D5E9D3207369160029869D /* DetailsVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8D5E9BF207367870029869D /* ViewController.swift in Sources */,
 				C8D5E9BD207367870029869D /* AppDelegate.swift in Sources */,
+				C8D5E9D4207369160029869D /* DetailsVC.swift in Sources */,
+				C8D5E9D22073687B0029869D /* TimelineVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
